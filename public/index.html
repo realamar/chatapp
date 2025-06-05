@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Live Chat Room</title>
+    <title>study</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -46,6 +46,150 @@
             left: 0;
             right: 0;
             z-index: 100;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .voice-call-button {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            border: none;
+            padding: 0.75rem;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .voice-call-button:hover {
+            background-color: #BBDEFB;
+            transform: scale(1.05);
+        }
+
+        .voice-call-button.active {
+            background-color: #FF5252;
+            color: white;
+        }
+
+        .voice-call-button.active:hover {
+            background-color: #FF1744;
+        }
+
+        .video-call-button {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            border: none;
+            padding: 0.75rem;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .video-call-button:hover {
+            background-color: #BBDEFB;
+            transform: scale(1.05);
+        }
+
+        .video-call-button.active {
+            background-color: #FF5252;
+            color: white;
+        }
+
+        .video-call-button.active:hover {
+            background-color: #FF1744;
+        }
+
+        .video-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 1000px;
+            background: var(--white);
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .video-container.active {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 45%;
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-label {
+            position: absolute;
+            bottom: 0.5rem;
+            left: 0.5rem;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+        }
+
+        .video-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .video-overlay.active {
+            display: block;
+        }
+
+        .end-call-button {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #FF5252;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 24px;
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background-color 0.2s;
+        }
+
+        .end-call-button:hover {
+            background-color: #FF1744;
         }
 
         .room-info {
@@ -134,6 +278,85 @@
             gap: 1rem;
             max-width: 1200px;
             margin: 0 auto;
+            align-items: center;
+        }
+
+        .file-input-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        #file-input {
+            display: none;
+        }
+
+        .file-input-label {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            padding: 0.75rem;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s;
+        }
+
+        .file-input-label:hover {
+            background-color: #BBDEFB;
+        }
+
+        .upload-button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 24px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            display: none;
+        }
+
+        .upload-button.visible {
+            display: block;
+        }
+
+        .upload-button:hover {
+            background-color: #1976D2;
+        }
+
+        .message img {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 8px;
+            margin-top: 0.5rem;
+        }
+
+        .download-button {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 16px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background-color 0.2s;
+        }
+
+        .download-button:hover {
+            background-color: #BBDEFB;
+        }
+
+        .message-content {
+            display: flex;
+            flex-direction: column;
         }
 
         #input {
@@ -204,23 +427,70 @@
 <body>
     <header class="header">
         <div class="room-info">
-            <h1 class="room-name">Chat Room</h1>
+            <h1 class="room-name">Study Room</h1>
         </div>
-        <button class="copy-link" onclick="copyRoomLink()">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
-                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
-            </svg>
-            Copy Link
-        </button>
+        <div class="header-actions">
+            <button class="voice-call-button" onclick="toggleVoiceCall()" title="Start voice call">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                    <line x1="12" y1="19" x2="12" y2="23"></line>
+                    <line x1="8" y1="23" x2="16" y2="23"></line>
+                </svg>
+            </button>
+            <button class="video-call-button" onclick="toggleVideoCall()" title="Start video call">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M23 7l-7 5 7 5V7z"></path>
+                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                </svg>
+            </button>
+            <button class="copy-link" onclick="copyRoomLink()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                    <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                </svg>
+                Copy Link
+            </button>
+        </div>
     </header>
 
     <div class="chat-container">
         <div id="messages"></div>
     </div>
 
+    <div class="video-overlay" id="videoOverlay"></div>
+    <div class="video-container" id="videoContainer">
+        <div class="video-wrapper">
+            <video id="localVideo" autoplay muted playsinline></video>
+            <div class="video-label">You</div>
+        </div>
+        <div class="video-wrapper">
+            <video id="remoteVideo" autoplay playsinline></video>
+            <div class="video-label">Remote</div>
+        </div>
+        <button class="end-call-button" onclick="endVideoCall()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                <line x1="12" y1="9" x2="12" y2="13"></line>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+            End Call
+        </button>
+    </div>
+
     <div class="input-container">
+        <div class="file-input-container">
+            <input type="file" id="file-input" accept="image/*" />
+            <label for="file-input" class="file-input-label" title="Upload image">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+            </label>
+        </div>
         <input id="input" type="text" placeholder="Type a message..." />
+        <button id="upload-button" class="upload-button" onclick="uploadImage()">Upload</button>
         <button id="send-button" onclick="sendMessage()">Send</button>
     </div>
 
